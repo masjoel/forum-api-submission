@@ -37,12 +37,20 @@ describe('GetComment entities', () => {
     const payload = {
       id: 'comment-123',
       content: 'sebuah comment',
-      date: tgl,
+      date: '2023-05-08',
+      username: 'username',
+      is_delete: '1',
+    };
+    const payload2 = {
+      id: 'comment-123',
+      content: 'sebuah comment',
+      date: [tgl],
       username: 'username',
       is_delete: '1',
     };
     // Action & Assert
     expect(() => new GetComment(payload)).toThrowError('GET_COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION');
+    expect(() => new GetComment(payload2)).toThrowError('GET_COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION');
   });
 
   it('should create GetComment object correctly', async () => {
